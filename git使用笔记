@@ -1,0 +1,206 @@
+pour faire git push
+
+username: Lucine1998
+password: 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
+
+
+
+Git Crash Course for Beginners
+https://gist.github.com/brandon1024/14b5f9fcfd982658d01811ee3045ff1e
+
+mac 如果文件中没有.git 文件 如何查看和隐藏
+
+方法一：终端
+
+打开一个新终端 依次执行
+defaults write com.apple.finder AppleShowAllFiles TRUE
+killall Finder
+
+方法二：快捷键
+
+在你要查看.git 或其他隐藏文件的文件夹中 使用 (command + shift + .) (点别忘了)
+隐藏和查看都可以用这个快捷键，要在你想查看的文件夹中使用
+
+
+version control system （VCS）版本控制系统
+
+gitKraken 图形化的版本控制
+
+git clone http://github.com/xxx/xxx.git
+
+git status
+
+git add. -->将文件放在暂存区
+git add project.py
+
+git commit -m "comment"
+
+将文件push到远程仓库
+
+Create a new repository on the command line
+
+echo "# MyFirstProject" >> README.md
+git init --> 初始化，将文件夹变成仓库，会出现.git文件夹
+git add README.md
+git commit -m "first commit"
+git push 用于将提交的变更发送到远程存储库进行协作。这使其他团队成员能够访问一组已保存的变更。
+git remote add origin https://github.com/Lucine1998/Web_interface.git
+git push -u origin master
+
+
+Or push an existing repository from the command line
+
+git remote add origin https://github.com/Lucine1998/Web_interface.git
+git push -u origin master
+
+
+
+40 分钟学会 Git | 日常开发全程大放送&搭配Github -> 教程
+https://www.bilibili.com/video/BV1db4y1d79C/?vd_source=4cf22bbd0562ccfb780c5897a0dafb6b
+
+配置基本用户信息
+git config --global user.name <你的用户名>
+git --version --> 获得git版本
+git init --> 初始化，创建一个新仓库，将文件夹变成仓库，会出现.git文件夹（如果不是用git clone https://github.com/xxx/xxx.git就需要该操作）
+
+第一次提交
+
+git add -A （--all 如果在使用 -A 选项时没有 <指定路径>，则整个工作树中的所有文件都将更新（旧版本的 Git 会限制当前目录及其子目录的更新）
+git commit -m "提交信息"
+
+流程：
+工作区 -- git add <file> --> 暂存区 -- git commit -m "comment" --> 仓库
+
+维护项目的日常
+工作区打回去：
+git checkout <filename>  --> 没有提交commit的可以通过此方法退回修改前状态，vscode中也可以直接点图标撤回修改
+
+提交后撤回：
+git reset HEAD^1
+
+git checkout HEAD projet.py --> 从最后一次的提交中把projet.py复制到工作区（会覆盖）
+
+
+分支
+
+从当前节点新建分支并切换到该分支
+git checkout -b <branchname>
+列举所有的分支
+git branch
+单纯切换到某个分支
+git checkout <branchname>
+删除特定分支
+git branch -D <branchname>
+合并分支
+git merge <branchname>  --> 先回到main分支，再在main中合并分支中的所有修改
+
+在github上创建一个新的仓库，然后将本地更改的repository更新到github
+
+将文件push到远程仓库
+
+Create a new repository on the command line
+
+echo "# MyFirstProject" >> README.md
+git init --> 初始化，将文件夹变成仓库，会出现.git文件夹
+git add README.md
+git commit -m "first commit"
+git push 用于将提交的变更发送到远程存储库进行协作。这使其他团队成员能够访问一组已保存的变更。
+git remote add origin https://github.com/Lucine1998/Web_interface.git
+git push -u origin master
+
+
+Or push an existing repository from the command line
+
+git remote add origin https://github.com/Lucine1998/Web_interface.git
+git push -u origin master
+
+
+
+
+
+更新别人github上的更新到本地
+# git clone http://...
+# git checkout -b travail_Pan
+# vim slides/09-fa/fastapi
+# git commit -am "comment"
+
+# récupérer les modif du prof
+# git fetch origin main
+
+# fusionner les modif
+# get merge origin
+
+# git pull
+# git switch travail_Pan
+# git merge travail_Pan
+
+
+# git remote remove origin
+# git remote add origin http://...
+# git remote add upstream http://...
+
+git remote --help
+# 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
+
+English version:
+
+First we'll update your local master branch. Go to your local project and check out the branch you want to merge into (your local master branch)
+$ git checkout master
+
+Fetch the remote, bringing the branches and their commits from the remote repository. You can use the -p, --prune option to delete any remote-tracking references that no longer exist in the remote. Commits to master will be stored in a local branch, remotes/origin/master
+$ git fetch -p origin
+
+Merge the changes from origin/master into your local master branch. This brings your master branch in sync with the remote repository, without losing your local changes. If your local branch didn't have any unique commits, Git will instead perform a "fast-forward".
+$ git merge origin/master
+
+Check out the branch you want to merge into
+$ git checkout <feature-branch>
+
+Merge your (now updated) master branch into your feature branch to update it with the latest changes from your team.
+$ git merge master
+
+Depending on your git configuration this may open vim. Enter a commit message, save, and quit vim:
+
+1. Press a to enter insert mode and append text following the current cursor position.
+2. Press the esc key to enter command mode.
+3. Type :wq to write the file to disk and quit.
+This only updates your local feature branch. To update it on GitHub, push your changes.
+
+$ git push origin <feature-branch>
+
+
+
+git分支删除
+1.删除本地分支
+git branch -d localBranchName
+
+本地删除分支
+如果你还在一个分支上，那么 Git 是不允许你删除这个分支的。所以，请记得退出分支：git checkout master。
+
+通过 git branch -d <branch>删除一个分支，比如：git branch -d fix/authentication。
+
+当一个分支被推送并合并到远程分支后，-d 才会本地删除该分支。如果一个分支还没有被推送或者合并，那么可以使用-D强制删除它。
+
+2.删除远程分支
+git push origin --delete remoteBranchName
+
+
+git push命令
+该命令的一般形式：git push <remote> <branch>
+默认情况下git选择origin作为远程仓库，你的当前分支作为要推送的分支
+如果当前分支为 main，则 git push 命令将提供两个默认参数——有效运行 git push origin main。
+
+--如何在git上推送到其他名称的分支
+
+通常，你会将本地分支推送到同名的远程分支——但并非总是如此。
+
+要推送到其他名称的分支，只需指定要推送的分支和目标分支的名称，并用冒号（:）分隔。
+
+例如，如果你想将名为 some-branch 的分支推送到 my-feature：
+
+(some-branch)$ git push origin some-branch:my-feature
+
+
+如何推送所有本地分支到远程
+你不需要经常从本地推送所有分支，但是如果你需要这样做，则可以添加 --all 标记：
+(main)$ git push --all
